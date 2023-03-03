@@ -61,16 +61,38 @@ function startGame() {
     }
     // Aggiungo il frammento alla board
     myAppend(board, fragment);
+    // Calcolo il punteggio necessario per vincere
+    victoryScore = cellNumber - bombsNumber;
+}
+
+// Definisco una funzione che generi un array con numeri random senza ripetizioni
+function generateRandomNums(randomNumsArray, arrayLength, maxNum) {
+    randomNumsArray = [];
+    while (randomNumsArray.length < arrayLength) {
+        const generatedNumber = Math.floor(Math.random() * maxNum) + 1;
+        if (!randomNumsArray.includes(generatedNumber)) {
+            randomNumsArray.push(generatedNumber);
+        }
+    }
+    return randomNumsArray;
 }
 
 /***********
  * Main
  */
 
+// START GAME
+
 // Definisco delle variabili in cui salvo board, button, select
 const board = document.querySelector('.board');
 const playButton = document.querySelector('.play-button');
 const selectInput = document.getElementById('level');
 
+const bombsNumber = 16;
+let victoryScore = 0;
 // Aggiungo un evento onclick al play button
 playButton.addEventListener('click', startGame);
+
+// GAME LOGIC
+
+generateRandomNums('bombs', 16, 100);
