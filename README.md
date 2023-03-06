@@ -24,7 +24,7 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 5. Definisco una funzione per la vittoria: 
     Stabilisco delle condizioni: quando il contatore è pari al punteggio per vincere. Richiamo la funzione termine partita.
 
-6. Definisco una funzione termine partita in cui stampo il punteggio in pagina e rimuovo l'event listener alle celle.
+6. Definisco una funzione termine partita in cui stampo il punteggio in pagina.
 
 7. Definisco una funzione di continua partita in cui definisco un ciclo while in cui la partita va avanti e il punteggio viene incrementato finchè non si realizzano le condizioni di game over o vittoria. 
 
@@ -42,10 +42,6 @@ Quando si clicca su una bomba e finisce la partita, evitare che si possa cliccar
 
 ## Superbonus 2
 Quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste.
-
-***
-
-
 
 ***
 ***

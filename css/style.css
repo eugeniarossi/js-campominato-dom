@@ -106,6 +106,10 @@ main {
     border: 1px solid white;
 }
 
+.game-over {
+    background-color: red;
+}
+
 .easy {
     width: calc(100% / 10);
     height: calc(100% / 10);
@@ -127,4 +131,7 @@ FOOTER
 
 footer {
     padding: 1.25rem .9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

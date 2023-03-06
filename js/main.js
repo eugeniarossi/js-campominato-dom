@@ -60,6 +60,12 @@ function createBoard(level, cellsNumber) {
             myAddClass(createdElement, 'cell-onclick');
             pushNotIncluded(clickedCellsList, i);
             console.log({clickedCellsList});
+            
+            if (bombs.includes(i)) {
+                createdElement.classList.add('game-over');
+                alert('hai perso');
+                endGame();
+            }
         });
         // Aggiungo l'elemento al frammento
         myAppend(fragment, createdElement);
@@ -85,6 +91,23 @@ function generateRandomNums(randomNumsArray, arrayLength, maxNum) {
     return randomNumsArray;
 }
 
+function endGame() {
+    finalScore.innerText = `Il tuo punteggio: ${clickedCellsList.length - 1}`;
+    /*
+    const cells = document.querySelectorAll('.cell');
+    for (let i = 1; i < cells.length; i++) {
+        document.removeEventListener('click', 'cells[i]');
+    }
+    */
+}
+
+function victory(currentScore, victoryScore) {
+    while (currentScore.length < victoryScore) {
+        return false;
+    }
+    return true;
+}
+
 /***********
  * Main
  */
@@ -96,18 +119,22 @@ function startGame() {
     const level = inputValue(selectInput);
     // Calcolo il numero di celle
     let cellsNumber = calcCellsNumber(level);
-    // Creo la board
-    createBoard(level, cellsNumber);
     // Creo un array con le bombe
     bombs = generateRandomNums('bombs', bombsNumber, cellsNumber);
+    console.log(bombs);
+    // Creo la board
+    createBoard(level, cellsNumber);
+    
+    //gameOver(bombs);
     // Calcolo il punteggio per la vittoria
-    victoryScore = cellsNumber - bombsNumber;
+    
 }
 
 // Definisco delle variabili in cui salvo board, button, select
 const board = document.querySelector('.board');
 const playButton = document.querySelector('.play-button');
 const selectInput = document.getElementById('level');
+const finalScore = document.getElementById('final-score');
 const bombsNumber = 16;
 
 let bombs;
@@ -119,7 +146,17 @@ let clickedCellsList = [];
 playButton.addEventListener('click', function() {
     
     startGame();
+    //victoryScore = cellsNumber - bombsNumber;
+    /*
+    victoryScore = 2;
+    //victory(clickedCellsList.length, 2);
+    
+    if (victory(clickedCellsList.length, victoryScore) === true) {
+        alert('hai vinto');
+    }
+    */
 });
+
 // GAME LOGIC
 
 // Calcolo il punteggio necessario per vincere
